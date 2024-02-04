@@ -10,6 +10,36 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div>
             <div class="form-group">
+              <label class="col-form-label" for="inputSuccess"
+                ><i></i> User Id</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                    form.get('userId')?.invalid && form.get('userId')?.touched
+                }"
+                id="inputSuccess"
+                placeholder="Enter ..."
+                formControlName="userId"
+              />
+
+              <span class="text-danger">{{
+                form.get("userId")?.touched &&
+                form.get("userId")?.dirty &&
+                form.get("userId")?.valid == true
+                  ? " "
+                  : form.get("userId")?.touched &&
+                    form.get("userId")?.dirty &&
+                    form.get("userId")?.invalid == true
+                  ? "must be at least 4 charater"
+                  : form.get("userId")?.touched == true
+                  ? "Name is requred"
+                  : ""
+              }}</span>
+            </div>
+            <div class="form-group">
               <div class="input-group">
                 <input
                   type="text"
@@ -18,7 +48,6 @@
                       ? 'form-control is-invalid'
                       : 'form-control'
                   "
-                  formControlName="userId"
                   placeholder="User ID"
                 />
                 <div
