@@ -1,0 +1,90 @@
+<div class="login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="javascript:void(0)">Admin Panel</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div>
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  type="text"
+                  [class]="
+                    userId.invalid && (userId.dirty || userId.touched)
+                      ? 'form-control is-invalid'
+                      : 'form-control'
+                  "
+                  formControlName="userId"
+                  placeholder="User ID"
+                />
+                <div
+                  *ngIf="!(userId.invalid && (userId.dirty || userId.touched))"
+                  class="input-group-append"
+                >
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+                </div>
+              </div>
+
+              <span
+                class="error invalid-feedback"
+                *ngIf="userId.invalid && (userId.dirty || userId.touched)"
+              >
+                <div *ngIf="userId.errors?.['required']">Name is required.</div>
+                <div *ngIf="userId.errors?.['minlength']">
+                  Name must be at least 4 characters long.
+                </div>
+                <div *ngIf="userId.errors?.['forbiddenName']">
+                  Name cannot be Bob.
+                </div>
+              </span>
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                formControlName="userPassword"
+                placeholder="Password"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <div class="icheck-primary">
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    formControlName="isRemember"
+                  />
+                  <label for="remember"> Remember Me </label>
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Log in
+                </button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </div>
+        </form>
+
+        <p class="mb-1">
+          <a routerLink="/forgot-password">I forgot my password</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+</div>
