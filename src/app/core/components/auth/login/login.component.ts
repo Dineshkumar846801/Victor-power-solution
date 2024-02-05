@@ -4,8 +4,8 @@ import {
   FormControl,
   FormGroup,
   Validators,
-  AbstractControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserLoginInfo } from 'src/app/models/UserLoginInfo';
 
 @Component({
@@ -13,6 +13,7 @@ import { UserLoginInfo } from 'src/app/models/UserLoginInfo';
   selector: 'app-login',
 })
 export class LoginComponent {
+  constructor(private router: Router) {}
   get user(): UserLoginInfo {
     return {
       isRemember: false,
@@ -25,9 +26,12 @@ export class LoginComponent {
     userId: new FormControl(this.user.userId, [
       Validators.required,
       Validators.minLength(4),
-      Validators.pattern('[a-zA-Z1-200 a-zA-Z1-200]*'),
+      Validators.pattern('[a-zA-Z1-200]*'),
     ]),
-    userPassword: new FormControl(this.user.userPassword),
+    userPassword: new FormControl(this.user.userPassword, [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
     isRemember: new FormControl(this.user.isRemember),
   });
 
@@ -39,5 +43,6 @@ export class LoginComponent {
 
   onSubmit() {
     console.log(this.form);
+    this.router.navigateByUrl('/admin');
   }
 }

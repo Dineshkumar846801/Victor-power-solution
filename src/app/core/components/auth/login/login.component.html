@@ -21,7 +21,7 @@
                     form.get('userId')?.invalid && form.get('userId')?.touched
                 }"
                 id="inputSuccess"
-                placeholder="Enter ..."
+                placeholder=""
                 formControlName="userId"
               />
 
@@ -39,53 +39,37 @@
                   : ""
               }}</span>
             </div>
+
             <div class="form-group">
-              <div class="input-group">
-                <input
-                  type="text"
-                  [class]="
-                    userId.invalid && (userId.dirty || userId.touched)
-                      ? 'form-control is-invalid'
-                      : 'form-control'
-                  "
-                  placeholder="User ID"
-                />
-                <div
-                  *ngIf="!(userId.invalid && (userId.dirty || userId.touched))"
-                  class="input-group-append"
-                >
-                  <div class="input-group-text">
-                    <span class="fas fa-user"></span>
-                  </div>
-                </div>
-              </div>
-
-              <span
-                class="error invalid-feedback"
-                *ngIf="userId.invalid && (userId.dirty || userId.touched)"
+              <label class="col-form-label" for="inputSuccess"
+                ><i></i>Password</label
               >
-                <div *ngIf="userId.errors?.['required']">Name is required.</div>
-                <div *ngIf="userId.errors?.['minlength']">
-                  Name must be at least 4 characters long.
-                </div>
-                <div *ngIf="userId.errors?.['forbiddenName']">
-                  Name cannot be Bob.
-                </div>
-              </span>
-            </div>
-
-            <div class="input-group mb-3">
               <input
-                type="password"
+                type="text"
                 class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                    form.get('userPassword')?.invalid &&
+                    form.get('userPassword')?.touched
+                }"
+                id="inputSuccess"
+                placeholder=""
                 formControlName="userPassword"
-                placeholder="Password"
               />
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
+
+              <span class="text-danger">{{
+                form.get("userPassword")?.touched &&
+                form.get("userPassword")?.dirty &&
+                form.get("userPassword")?.valid == true
+                  ? " "
+                  : form.get("userPassword")?.touched &&
+                    form.get("userPassword")?.dirty &&
+                    form.get("userPassword")?.invalid == true
+                  ? "must be at least 8 charater"
+                  : form.get("userPassword")?.touched == true
+                  ? "Password is requred"
+                  : ""
+              }}</span>
             </div>
             <div class="row">
               <div class="col-8">
