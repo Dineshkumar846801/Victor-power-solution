@@ -6,14 +6,30 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './core/components/admin/admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './core/components/shared/sidebar/sidebar.component';
-import { NavbarComponent } from './core/shared/navbar/navbar.component';
+import { NavbarComponent } from './core/components/shared/navbar/navbar.component';
+import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'admin', component: AdminComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: '', // child route path
+        component: DashboardComponent, // child route component that the router renders
+      },
+    ],
+  },
 ];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AdminComponent, SidebarComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    AdminComponent,
+    SidebarComponent,
+    NavbarComponent,
+  ],
   imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
