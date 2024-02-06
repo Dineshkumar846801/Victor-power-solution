@@ -18,6 +18,8 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent },
+
       { path: 'form', component: FormComponent },
     ],
   },
