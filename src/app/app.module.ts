@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './core/components/shared/sidebar/sidebar.component';
 import { NavbarComponent } from './core/components/shared/navbar/navbar.component';
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
+import { FormComponent } from './core/components/form/form.component';
+import { Error404Component } from './core/components/error/error404/error404.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,12 +17,11 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      {
-        path: '', // child route path
-        component: DashboardComponent, // child route component that the router renders
-      },
+      { path: '', component: DashboardComponent },
+      { path: 'form', component: FormComponent },
     ],
   },
+  { path: '**', component: Error404Component },
 ];
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ const routes: Routes = [
     AdminComponent,
     SidebarComponent,
     NavbarComponent,
+    FormComponent,
+    Error404Component,
   ],
   imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)],
   providers: [],
