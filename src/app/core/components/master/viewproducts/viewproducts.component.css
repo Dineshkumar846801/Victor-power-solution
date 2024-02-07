@@ -1,0 +1,158 @@
+@media (min-width: 568px) {
+  .container {
+    width: 550px;
+  }
+
+  .products_info {
+    height: 371px !important;
+    margin: 20px 0px !important;
+    box-shadow: 0 3px 9px rgb(0 0 0/ 12%);
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+
+  .view_Details {
+    width: fit-content;
+  }
+}
+
+.products_info {
+  position: relative;
+}
+.products_info:hover .kccportable-image {
+  background-color: rgb(9, 9, 9, 0.6);
+}
+
+.products_info:hover .view_Details {
+  display: block;
+}
+
+.products_info {
+  height: 371px !important;
+  box-shadow: 0 3px 9px rgb(0 0 0/ 12%);
+}
+
+.products_info:hover {
+  box-shadow: 0 12px 15px rgb(0 0 0/ 12%);
+}
+
+.products_info .i-color {
+  color: #ffbc01;
+}
+
+.products_info .view_Details {
+  position: relative;
+  top: calc(100% - 50%);
+  width: calc(100% - 40%);
+  text-align: center;
+  left: 20%;
+}
+
+.product-discount {
+  height: 60px;
+  width: 60px;
+  background-color: transparent;
+  position: absolute;
+  z-index: 500;
+  display: flex;
+  right: 0;
+}
+.product-discount img {
+  height: 60px;
+}
+
+.kccportable-image {
+  height: 284px;
+  width: -webkit-fill-available;
+}
+
+.kccportable-image img {
+  margin-top: -25px;
+  height: 80%;
+  padding: 0px 15px;
+  position: relative;
+  z-index: -1;
+}
+
+#kcc_portable_stationary .kccportable-image img,
+#koil_igreen-genset .kccportable-image img {
+  width: -webkit-fill-available;
+  padding-top: 30px;
+}
+
+.kccportable-image:hover .view_details {
+  display: block;
+}
+
+.kccportable-image:hover {
+  background-color: rgb(9, 9, 9, 0.6);
+}
+
+.kccportable-image a:hover {
+  background-color: #7ce161;
+  color: #fff;
+}
+
+.products_info:hover .kccportable-image {
+  background-color: rgb(9, 9, 9, 0.6);
+}
+
+.products_info:hover .view_Details {
+  display: block;
+}
+
+.kccportable-image a {
+  padding: 10px 20px;
+  border-radius: 2px;
+  background-color: #fff;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400 !important;
+  cursor: pointer;
+  display: block;
+  height: 40px;
+  position: absolute;
+  text-decoration: none;
+}
+
+.kccportable-image {
+  height: 284px;
+  width: -webkit-fill-available;
+}
+
+.products_info:hover .view_Details {
+  display: block;
+}
+
+.kccportable-image:hover .view_details {
+  display: block;
+}
+
+.products_info .view_Details {
+  position: relative;
+  top: calc(100% - 50%);
+  width: calc(100% - 40%);
+  text-align: center;
+  left: 20%;
+}
+
+.view_Details {
+  width: fit-content;
+}
+
+.kcc_image_title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  background-color: transparent;
+}
+
+.addtolink {
+  padding: 15px 8px 10px 11px;
+  display: flex;
+  flex-direction: column;
+}

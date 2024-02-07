@@ -42,7 +42,6 @@ export class LoginComponent {
   userLoginInfo: UserLoginInfo = this.user;
 
   onSubmit() {
-    console.log(this.form);
     this.router.navigateByUrl('/admin');
   }
 }

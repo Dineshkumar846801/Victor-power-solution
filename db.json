@@ -1,0 +1,23 @@
+{
+  "posts": [
+    { "id": "1", "title": "a title", "views": 100 },
+    { "id": "2", "title": "another title", "views": 200 }
+  ],
+  "products": [
+    {
+      "imageUrl": "https://www.victorpowersolutions.com/assets/images/products/kcc_portable_2-20/418_360/kcc.jpeg",
+      "description": "Diesel : 15kVA to 1010 kVA Available GAS : 15 kVA to 200 kVA Available",
+      "rating": 5,
+      "discountUrl": "https://www.victorpowersolutions.com/assets/images/products/product-offer-10per.png"
+    },
+    {
+      "imageUrl": "https://www.victorpowersolutions.com/assets/images/products/kcc_portable_2-20/418_360/kcc.jpeg",
+      "description": "Diesel : 15kVA to 1010 kVA Available GAS : 15 kVA to 200 kVA Available",
+      "rating": 5,
+      "discountUrl": "https://www.victorpowersolutions.com/assets/images/products/product-offer-10per.png"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

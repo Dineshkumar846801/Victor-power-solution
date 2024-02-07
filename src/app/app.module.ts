@@ -10,6 +10,9 @@ import { NavbarComponent } from './core/components/shared/navbar/navbar.componen
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { FormComponent } from './core/components/form/form.component';
 import { Error404Component } from './core/components/error/error404/error404.component';
+import { ProductsService } from './services/products.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ViewproductsComponent } from './core/components/master/viewproducts/viewproducts.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,7 +23,7 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
 
-      { path: 'form', component: FormComponent },
+      { path: 'viewproducts', component: ViewproductsComponent },
     ],
   },
   { path: '**', component: Error404Component },
@@ -34,9 +37,15 @@ const routes: Routes = [
     NavbarComponent,
     FormComponent,
     Error404Component,
+    ViewproductsComponent,
   ],
-  imports: [BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)],
-  providers: [],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+  ],
+  providers: [ProductsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
