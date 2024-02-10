@@ -1,6 +1,6 @@
 export interface ProductInfo {
   imageUrl: string;
   description: string;
-  rating: number;
+  rating: string;
   discountUrl: string;
 }

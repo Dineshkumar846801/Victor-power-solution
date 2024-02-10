@@ -1,45 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { ProductInfo } from 'src/app/models/ProductInfo';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { __values } from 'tslib';
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
   styleUrls: ['./viewproducts.component.css'],
 })
-export class ViewproductsComponent implements OnInit {
+export class ViewproductsComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductsService) {}
+
+  subscription: Subscription | null = null;
+  private get _formInitialState(): ProductInfo | any {
+    return {
+      values: {
+        imageUrl: '',
+        description: '',
+        rating: 0,
+        discountUrl: '',
+      },
+    };
+  }
+
+  // formValue: ProductInfo = this._formInitialState;
+
   get product(): ProductInfo {
     return {
       imageUrl: '',
       description: '',
-      rating: 0,
+      rating: '',
       discountUrl: '',
     };
   }
 
-  productInfo = new FormGroup({
+  products: ProductInfo[] = [];
+
+  productForm = new FormGroup({
     imageUrl: new FormControl(this.product.imageUrl),
     description: new FormControl(this.product.description),
     rating: new FormControl(this.product.description),
     discountUrl: new FormControl(this.product.discountUrl),
   });
 
-  ngOnInit(): void {}
-
-  onSubmit() {
-    this.productInfo.patchValue({
-      imageUrl:
-        'https://www.victorpowersolutions.com/assets/images/products/kcc_portable_2-20/418_360/kcc.jpeg',
-      description:
-        'Diesel : 15kVA to 1010 kVA Available GAS : 15 kVA to 200 kVA Available',
-      rating: '0',
-      discountUrl:
-        'https://www.victorpowersolutions.com/assets/images/products/product-offer-10per.png',
-    });
-
-    this.productService.product().subscribe((data) => {
-      console.log(data);
-    });
+  ngOnInit(): void {
+    this.loadProducts();
   }
+  ngOnDestroy(): void {
+    this.subscription && this.subscription.unsubscribe();
+  }
+
+  // formValue: ProductInfo = this.productInfo.value : ProductInfo;
+  onSubmit() {
+    if (this.productForm.valid) {
+      console.log(this.productForm.value);
+
+      //convert form value to particular type
+      const payload = this.productForm.value as ProductInfo;
+
+      this.productService.createProduct(payload).subscribe({
+        next: (_product) => {
+          if (_product) {
+            // load all data one more time
+            this.loadProducts();
+            this.productForm.reset();
+            this.products.push(_product as ProductInfo);
+          }
+        },
+      });
+    }
+  }
+
+  private loadProducts = () => {
+    this.subscription = this.productService.getAll().subscribe({
+      next: (_products: ProductInfo[]) => {
+        this.products = _products;
+      },
+    });
+  };
 }

@@ -26,23 +26,6 @@
       </div>
     </div>
 
-    <!-- SidebarSearch Form -->
-    <div class="form-inline">
-      <div class="input-group" data-widget="sidebar-search">
-        <input
-          class="form-control form-control-sidebar"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-sidebar">
-            <i class="fas fa-search fa-fw"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul
@@ -84,7 +67,7 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-torii-gate"></i>
             <p>
               Master
               <i class="right fas fa-angle-left"></i>
@@ -92,9 +75,44 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a routerLink="/admin/viewproducts" class="nav-link">
+              <a
+                routerLink="/admin/viewproducts"
+                routerLinkActive="active"
+                class="nav-link"
+              >
                 <i class="far fa-circle nav-icon"></i>
                 <p>View Products</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-graduation-cap"></i>
+            <p>
+              Attributes
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a
+                routerLink="/admin/attribute/attributemaster"
+                routerLinkActive="active"
+                class="nav-link"
+              >
+                <i class="far fa-circle nav-icon"></i>
+                <p>Attribute Master</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                routerLink="/admin/product/attributemapping"
+                routerLinkActive="active"
+                class="nav-link"
+              >
+                <i class="far fa-circle nav-icon"></i>
+                <p>Attribute Mapping</p>
               </a>
             </li>
           </ul>

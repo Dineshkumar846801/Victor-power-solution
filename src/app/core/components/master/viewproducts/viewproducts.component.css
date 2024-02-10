@@ -1,4 +1,4 @@
-@media (min-width: 568px) {
+/* @media (min-width: 568px) {
   .container {
     width: 550px;
   }
@@ -155,4 +155,17 @@
   padding: 15px 8px 10px 11px;
   display: flex;
   flex-direction: column;
+} */
+
+.view_Details_product {
+  margin: 0 auto;
+  padding: 3px;
+  width: 100px;
+}
+
+.table td,
+.table th {
+  padding: 0.25rem 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
 }

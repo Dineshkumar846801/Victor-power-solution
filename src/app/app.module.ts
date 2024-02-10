@@ -13,6 +13,9 @@ import { Error404Component } from './core/components/error/error404/error404.com
 import { ProductsService } from './services/products.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewproductsComponent } from './core/components/master/viewproducts/viewproducts.component';
+import { ProductdetailsComponent } from './core/components/productdetails/productdetails.component';
+import { ProductAttributeMappingComponent } from './core/components/attributes/product.attribute.mapping/product.attribute.mapping.component';
+import { AttributeMasterComponent } from './core/components/attributes/attribute.master/attribute.master.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,6 +27,18 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
 
       { path: 'viewproducts', component: ViewproductsComponent },
+      {
+        path: 'viewproducts/productdetails',
+        component: ProductdetailsComponent,
+      },
+      {
+        path: 'attribute/attributemaster',
+        component: AttributeMasterComponent,
+      },
+      {
+        path: 'product/attributemapping',
+        component: ProductAttributeMappingComponent,
+      },
     ],
   },
   { path: '**', component: Error404Component },
@@ -38,6 +53,9 @@ const routes: Routes = [
     FormComponent,
     Error404Component,
     ViewproductsComponent,
+    ProductdetailsComponent,
+    ProductAttributeMappingComponent,
+    AttributeMasterComponent,
   ],
   imports: [
     BrowserModule,
