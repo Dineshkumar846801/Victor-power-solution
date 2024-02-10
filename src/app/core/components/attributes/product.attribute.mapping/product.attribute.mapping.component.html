@@ -40,10 +40,18 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group" *ngFor="let key of productKeys">
-                    <select class="form-control">
-                      <option>{{ key }}</option>
-                    </select>
+                  <div class="form-group">
+                    <label>Attribute Id </label>
+                    <div>
+                      <select class="form-control">
+                        <option
+                          *ngFor="let item of product | keyvalue"
+                          value="{{ item.key }}"
+                        >
+                          {{ item.key.replaceAll("_", " ") | uppercase }}
+                        </option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -52,6 +60,27 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </form>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Product Attribute</h3>
+          </div>
+          <table class="table table-hover text-nowra table-sm">
+            <thead>
+              <tr>
+                <th>Product Id</th>
+                <th>Attribute Id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

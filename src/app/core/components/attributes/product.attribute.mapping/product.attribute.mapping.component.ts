@@ -33,8 +33,23 @@ export class ProductAttributeMappingComponent implements OnInit, OnDestroy {
     };
   }
 
-  product: AttributeMasters | null = null;
-  productKeys = Object.keys(this.product || {});
+  product: AttributeMasters = {
+    imageUrl: '',
+    title: '',
+    duty: '',
+    no_of_cylinders: 0,
+    no_of_phases: '',
+    output_voltage: '',
+    power_factor_lagging: 0,
+    currentPhase: '',
+    frequency: '',
+    governing_class: '',
+    starting_system: '',
+    fuel_tank_capacity: 0,
+    genset_dimension: '',
+    genset_weight: 0,
+  };
+
   productAttributes: AttributeMasters[] = [];
 
   private loadProductAttributeMaster = () => {
@@ -48,6 +63,7 @@ export class ProductAttributeMappingComponent implements OnInit, OnDestroy {
   attributeProductForm = new FormGroup({});
 
   ngOnInit(): void {
+    console.log(Object.keys(this.product));
     this.loadProductAttributeMaster();
   }
 
