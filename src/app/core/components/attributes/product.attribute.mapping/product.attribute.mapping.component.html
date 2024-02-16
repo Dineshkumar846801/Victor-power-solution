@@ -1,0 +1,92 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Product Attribute Mapping</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Admin</a></li>
+          <li class="breadcrumb-item active">Attribute Master</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Attribute Master</h3>
+          </div>
+          <form [formGroup]="attributeProductForm" (ngSubmit)="onSubmitHandler()" id="quickForm" novalidate="novalidate">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Product Id</label>
+                    <select class="form-control" formControlName="productTitle">
+                      <option *ngFor="let title of productTitles" selected>
+                        {{ title.description }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Attribute Id </label>
+                    <div>
+                      <select class="form-control" formControlName="attributeDisplayName">
+                        <option *ngFor="let item of product | keyvalue" [ngValue]="item.key" selected>
+                          {{ item.key.replaceAll('_', ' ') | uppercase }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Product Attribute</h3>
+          </div>
+          <table class="table table-hover text-nowra table-sm">
+            <thead>
+              <tr>
+                <th>Product Id</th>
+                <th>Attribute Id</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let productMapping of productAttributesMappingVM">
+                <td>{{ productMapping.productTitle }}</td>
+                <td>{{ productMapping.attributeDisplayName.replaceAll('_', ' ') | uppercase }}</td>
+                <td style="padding: 0px; width: 100px">
+                  <a class="btn btn-primary btn-sm">
+                    <i class="fas fa-eye"> </i>
+                  </a>
+                  <a class="btn btn-info btn-sm" (click)="editProductMappingHandler(productMapping)">
+                    <i class="fas fa-pencil-alt"> </i>
+                  </a>
+                  <a class="btn btn-danger btn-sm" (click)="deleteProductMappingHandler(productMapping)">
+                    <i class="fas fa-trash"> </i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

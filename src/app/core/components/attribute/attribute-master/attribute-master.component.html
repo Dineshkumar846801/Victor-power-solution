@@ -1,0 +1,65 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Attribute Master</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Admin</a></li>
+          <li class="breadcrumb-item active">Attribute Master</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Attribute Master</h3>
+          </div>
+
+          <form id="quickForm" novalidate="novalidate">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="commonName">Common Name</label>
+                <input type="text" [value]="formValue.commonName" [disabled]="isCommonNameDisbaled" class="form-control" placeholder="Common name" />
+                <input type="checkbox" name="ckCommonName" (change)="commonNameCheckBoxChangeHandler($event)" [checked]="!isCommonNameDisbaled" id="" />
+              </div>
+              <div class="form-group">
+                <label for="displayName">Display Name</label>
+                <input type="text" (change)="displayNameChangeHandler($event)" id="displayName" class="form-control" placeholder="" />
+              </div>
+              <div class="form-group">
+                <label>Type</label>
+                <select class="form-control">
+                  <option>String</option>
+                  <option>Number</option>
+                  <option>Date</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <ul>
+          <li *ngFor="let attribute of attributes">
+            <div (click)="getAttributeInfo(attribute)">{{ attribute.commonName }} - {{ attribute.displayName }}</div>
+          </li>
+        </ul>
+        <code *ngIf="attribute != null">
+          {{ attribute | json }}
+        </code>
+      </div>
+    </div>
+  </div>
+</section>

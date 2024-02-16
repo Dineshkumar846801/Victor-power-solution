@@ -1,0 +1,53 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>E-commerce</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">E-commerce</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="card card-solid">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <h3 class="d-inline-block d-sm-none"></h3>
+          <div class="col-12">
+            <img
+              src="{{ currentProduct?.imageUrl }}"
+              class="product-image"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3 class="my-3">{{ currentProduct?.title }}</h3>
+          <table class="table table-hover text-nowra table-sm">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>DG Model</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of currentProduct | keyvalue">
+                <td>
+                  {{ item.key.replaceAll("_", " ") | uppercase }}
+                </td>
+                <td>{{ item.value }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
